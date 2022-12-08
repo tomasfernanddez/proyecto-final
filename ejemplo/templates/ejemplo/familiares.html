@@ -2,14 +2,19 @@
 {% block contenido %}
   {% for familiar in lista_familiares %}
       <ul>
-          <li> Nombre: {{familiar.nombre}}, Dirección: {{familiar.direccion}}, Fecha de Nacimiento: {{familiar.fecha}}, Pasaporte: {{familiar.numero_pasaporte}}
-              <!-- Esto agrega un link al form de actulización-->
-              <a href='actualizar/{{ familiar.id }}'>Actualizar</a>
+          <li> 
+            Id: {{familiar.id}}, Nombre: {{familiar.nombre}}, Dirección: {{familiar.direccion}}, Fecha de Nacimiento: {{familiar.fecha}}, Pasaporte: {{familiar.numero_pasaporte}}
+            <a href='actualizar/{{ familiar.id }}'>Actualizar</a>
+            <a href='borrar/{{ familiar.id }}'>Borrar</a>
           </li>
       </ul>
   {% endfor %}
+  <a href='alta'>Generar Alta de familiar</a>
+  <h1> </h1>
+  <a href='buscar'>Buscar familiares</a>
 {% endblock %}
 
 {% block titulo%}
 Lista de familiares:
+
 {% endblock %}
