@@ -8,7 +8,7 @@ class Familiar(models.Model):
     fecha = models.DateField(default=True)
 
     def __str__(self):
-      return f"{self.nombre}, {self.numero_pasaporte}, {self.id}"
+      return f"{self.nombre}, {self.direccion}, {self.fecha}, {self.numero_pasaporte}, {self.id}"
 
 class Dummy(models.Model):
     nombre = models.CharField(max_length=100)
