@@ -1,0 +1,19 @@
+{% extends 'ejemplo/base_auto.html' %}
+{% block titulo%} Buscar Autos por marca {% endblock %}
+{% block contenido %}
+  
+  <form action="/panel-auto/buscar" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+  </form>
+
+  {% for auto in object_list %}
+      <ul>
+          <li> Marca: {{auto.marca}}, Modelo: {{auto.modelo}}, color: {{auto.color}}, Patente: {{auto.patente}}</li>
+      </ul>
+  {% endfor %}
+
+  <h1> </h1>
+  <a href='http://localhost:8000/panel-auto/'><input type="button" value="Lista de Autos" class="btn btn-primary" /></a>
+{% endblock %}

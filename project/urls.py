@@ -22,7 +22,11 @@ from ejemplo.views import (index, saludar_a, sumar,
                             ActualizarFamiliar, BorrarFamiliar,
                             FamiliarList, FamiliarCrear, 
                             FamiliarBorrar, FamiliarActualizar,
-                            FamiliarDetalle)
+                            FamiliarDetalle, AutoList, AutoCrear, 
+                            AutoBorrar, AutoActualizar,
+                            AutoDetalle, MascotaList, MascotaCrear, 
+                            MascotaBorrar, MascotaActualizar,
+                            MascotaDetalle, BuscarMascota, BuscarAuto)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,4 +45,18 @@ urlpatterns = [
     path('panel-familia/<int:pk>/actualizar', FamiliarActualizar.as_view()),
     path('success_updated_message', TemplateView.as_view(template_name="ejemplo/success_updated_message.html")),
     path('panel-familia/<int:pk>/detalle', FamiliarDetalle.as_view()),
+    path('panel-auto/', AutoList.as_view()),
+    path('panel-auto/crear', AutoCrear.as_view()),
+    path('panel-auto/<int:pk>/borrar', AutoBorrar.as_view()),
+    path('panel-auto/<int:pk>/actualizar', AutoActualizar.as_view()),
+    path('success_updated_message_auto', TemplateView.as_view(template_name="ejemplo/success_updated_message_auto.html")),
+    path('panel-auto/<int:pk>/detalle', AutoDetalle.as_view()),
+    path('panel-mascota/', MascotaList.as_view()),
+    path('panel-mascota/crear', MascotaCrear.as_view()),
+    path('panel-mascota/<int:pk>/borrar', MascotaBorrar.as_view()),
+    path('panel-mascota/<int:pk>/actualizar', MascotaActualizar.as_view()),
+    path('success_updated_message_mascota', TemplateView.as_view(template_name="ejemplo/success_updated_message_mascota.html")),
+    path('panel-mascota/<int:pk>/detalle', MascotaDetalle.as_view()),
+    path('panel-mascota/buscar', BuscarMascota.as_view()),
+    path('panel-auto/buscar', BuscarAuto.as_view()),
 ]

@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from ejemplo.models import Familiar
-from ejemplo.forms import Buscar, FamiliarForm 
+from ejemplo.forms import Buscar, FamiliarForm, BuscarAuto, BuscarMascota
 from django.views import View 
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
+from ejemplo.models import Auto
+from ejemplo.models import Mascota
 
 def index(request):
     return render(request, "ejemplo/saludar.html")
@@ -140,3 +142,85 @@ class FamiliarActualizar(UpdateView):
 class FamiliarDetalle(DetailView):
   model = Familiar
   fields = ["nombre", "direccion", "fecha", "numero_pasaporte"]
+
+class AutoList(ListView):
+  model = Auto
+
+class AutoCrear(CreateView):
+  model = Auto
+  success_url = "/panel-auto"
+  fields = ["marca", "modelo", "color", "patente"]
+
+class AutoBorrar(DeleteView):
+  model = Auto
+  success_url = "/panel-auto"
+
+class AutoActualizar(UpdateView):
+  model = Auto
+  success_url = "/success_updated_message_auto"
+  fields = ["marca", "modelo", "color", "patente"]
+
+class AutoDetalle(DetailView):
+  model = Auto
+  fields = ["marca", "modelo", "color", "patente"]
+
+
+class MascotaList(ListView):
+  model = Mascota
+
+class MascotaCrear(CreateView):
+  model = Mascota
+  success_url = "/panel-mascota"
+  fields = ["nombre", "animal", "raza", "fecha"]
+
+class MascotaBorrar(DeleteView):
+  model = Mascota
+  success_url = "/panel-mascota"
+
+class MascotaActualizar(UpdateView):
+  model = Mascota
+  success_url = "/success_updated_message_mascota"
+  fields = ["nombre", "animal", "raza", "fecha"]
+
+class MascotaDetalle(DetailView):
+  model = Mascota
+  fields = ["nombre", "animal", "raza", "fecha"]
+
+
+class BuscarAuto(View):
+    form_class = BuscarAuto
+    template_name = 'ejemplo/auto_buscar.html'
+    initial = {"marca":""}
+
+    def get(self, request):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form':form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            marca = form.cleaned_data.get("marca")
+            object_list = Auto.objects.filter(marca__icontains=marca).all() 
+            form = self.form_class(initial=self.initial)
+            return render(request, self.template_name, {'form':form, 
+                                                        'object_list':object_list})
+        return render(request, self.template_name, {"form": form})
+
+class BuscarMascota(View):
+    form_class = BuscarMascota
+    template_name = 'ejemplo/mascota_buscar.html'
+    initial = {"nombre":""}
+
+    def get(self, request):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form':form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            nombre = form.cleaned_data.get("nombre")
+            object_list = Mascota.objects.filter(nombre__icontains=nombre).all() 
+            form = self.form_class(initial=self.initial)
+            return render(request, self.template_name, {'form':form, 
+                                                        'object_list':object_list})
+        return render(request, self.template_name, {"form": form})

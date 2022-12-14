@@ -1,0 +1,22 @@
+{% extends 'ejemplo/base_mascota.html' %}
+{% block contenido %}
+{% for mascota in object_list %}
+    <ul>
+        <li>{{mascota.nombre}} - {{mascota.animal}} 
+            <a href='{{ mascota.id }}/detalle'><input type="button" value="Detalle" class="btn btn-primary" /></a>
+            <a href='{{ mascota.id }}/actualizar'><input type="button" value="Actualizar" class="btn btn-primary" /></a>
+            <a href='{{ mascota.id }}/borrar'><input type="button" value="Borrar" class="btn btn-primary" /></a>
+        </li>
+    </ul>
+
+{% endfor %}    
+</ul>
+
+<a href='/panel-mascota/crear'><input type="button" value="Generar alta de Mascota" class="btn btn-primary" /></a>
+<a href='/panel-mascota/buscar'><input type="button" value="Buscar Mascotas" class="btn btn-primary" /></a>
+{% endblock %}
+
+{% block titulo%}
+Lista de Mascotas:
+
+{% endblock %}

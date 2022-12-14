@@ -1,0 +1,21 @@
+{% extends 'ejemplo/base_auto.html' %}
+{% block contenido %}
+{% for auto in object_list %}
+    <ul>
+        <li>{{auto.marca}} {{auto.modelo}}, Patente: {{auto.patente}}
+            <a href='{{ auto.id }}/detalle'><input type="button" value="Detalle" class="btn btn-primary" /></a>
+            <a href='{{ auto.id }}/actualizar'><input type="button" value="Actualizar" class="btn btn-primary" /></a>
+            <a href='{{ auto.id }}/borrar'><input type="button" value="Borrar" class="btn btn-primary" /></a>
+        </li>
+    </ul>
+{% endfor %}    
+</ul>
+
+<a href='/panel-auto/crear'><input type="button" value="Generar alta de Auto" class="btn btn-primary" /></a>
+<a href='/panel-auto/buscar'><input type="button" value="Buscar Autos" class="btn btn-primary" /></a>
+{% endblock %}
+
+{% block titulo%}
+Lista de Autos:
+
+{% endblock %}
