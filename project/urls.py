@@ -27,6 +27,7 @@ from ejemplo.views import (index, saludar_a, sumar,
                             AutoDetalle, MascotaList, MascotaCrear, 
                             MascotaBorrar, MascotaActualizar,
                             MascotaDetalle, BuscarMascota, BuscarAuto)
+from ejemplo_dos.views import (index, PostList, PostCrear)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -59,4 +60,7 @@ urlpatterns = [
     path('panel-mascota/<int:pk>/detalle', MascotaDetalle.as_view()),
     path('panel-mascota/buscar', BuscarMascota.as_view()),
     path('panel-auto/buscar', BuscarAuto.as_view()),
+    path('ejemplo_dos/', index, name="ejemplo-dos-index"),
+    path('ejemplo_dos/listar', PostList.as_view(), name="ejemplo-dos-listar"),
+    path('ejemplo_dos/crear', PostCrear.as_view(), name="ejemplo-dos-crear"),
 ]
