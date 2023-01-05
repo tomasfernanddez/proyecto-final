@@ -4,10 +4,11 @@
 <ul>
 {% for mensaje in object_list %}
     <li>
-        {{mensaje.enviado_el}} - - {{mensaje.email}} - - {{mensaje.nombre}}
-
+        {{mensaje.nombre}} - {{mensaje.enviado_el}}
         <a href="{% url 'ejemplo-dos-mensajes-detalle' mensaje.id %}">Ver</a>
+        <a href="{% url 'ejemplo-dos-mensajes-borrar' mensaje.id %}">Borrar</a>
     </li>
 {% endfor %}
+<a href="{% url 'ejemplo-dos-listar' %}"><input type="button" value="Volver" class="button" /></a>
 </ul>
 {% endblock %}

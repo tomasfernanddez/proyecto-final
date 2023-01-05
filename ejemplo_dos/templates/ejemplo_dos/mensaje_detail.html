@@ -6,5 +6,6 @@
     <div>
         {{object.texto}}
     </div>
-
+    <a href="{% url 'ejemplo-dos-listar' %}"><input type="button" value="Volver" class="button" /></a>
+    <a href="{% url 'ejemplo-dos-mensajes-borrar' mensaje.id %}"><input type="button" value="Borrar" class="button" /></a>
 {% endblock %}

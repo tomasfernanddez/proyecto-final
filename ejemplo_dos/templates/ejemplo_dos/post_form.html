@@ -4,5 +4,6 @@
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="Postear">
+    <a href="{% url 'ejemplo-dos-listar' %}"><input type="button" value="Volver" class="button" /></a>
 </form>
 {% endblock %}

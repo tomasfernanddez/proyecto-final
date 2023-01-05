@@ -33,7 +33,7 @@ from ejemplo_dos.views import (index, PostListar, PostCrear, PostBorrar,
                                 PostActualizar, PostDetalle, UserSignUp,
                                 UserLogin, UserLogout, AvatarActualizar,
                                 UserActualizar, MensajeCrear, MensajeListar, 
-                                MensajeDetalle)
+                                MensajeDetalle, MensajeBorrar)
 from django.contrib.admin.views.decorators import staff_member_required
 
 urlpatterns = [
@@ -81,6 +81,7 @@ urlpatterns = [
     path('ejemplo-dos/mensajes/crear/', MensajeCrear.as_view(), name="ejemplo-dos-mensajes-crear"),
     path('ejemplo-dos/mensajes/listar/', MensajeListar.as_view(), name="ejemplo-dos-mensajes-listar"),
     path('ejemplo-dos/mensajes/<int:pk>/detalle/', MensajeDetalle.as_view(), name="ejemplo-dos-mensajes-detalle"),
+    path('ejemplo-dos/mensajes/<int:pk>/borrar/', MensajeBorrar.as_view(), name="ejemplo-dos-mensajes-borrar"),
 ]
 
 
