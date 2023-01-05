@@ -1,0 +1,10 @@
+{% extends "ejemplo_dos/base.html" %}
+
+{% block contenido %}
+    <h1>{{object.nombre}} - {{object.email}}</h1>
+    <h5>{{object.enviado_el}}</h5>
+    <div>
+        {{object.texto}}
+    </div>
+
+{% endblock %}
